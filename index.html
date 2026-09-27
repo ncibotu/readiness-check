@@ -446,6 +446,31 @@
     line-height:1.55;
   }
   .cta a{color:var(--accent-ink);font-weight:600;text-decoration:none;border-bottom:1px solid currentColor;}
+  .cta p{margin:0 0 14px;}
+  .cta .book-btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    min-height:46px;padding:12px 22px;border-radius:11px;border:none;
+    background:var(--accent);color:#fff;font-size:15px;font-weight:700;
+    box-shadow:var(--shadow);
+  }
+  .cta .book-btn:hover{filter:brightness(1.08);}
+  .cta .book-btn:focus-visible{outline:2px solid var(--quality);outline-offset:2px;}
+  .cta .cta-alt{display:block;margin-top:12px;font-size:13px;color:var(--ink-faint);}
+  .cta .cta-alt a{color:inherit;font-weight:600;}
+  .next-steps{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);padding:20px clamp(16px,4vw,26px);
+  }
+  .next-steps h3{margin:0 0 4px;font-size:18px;font-weight:700;}
+  .next-steps .ns-sub{margin:0 0 14px;font-size:13.5px;color:var(--ink-faint);}
+  .next-steps ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;}
+  .next-steps li{display:flex;gap:12px;align-items:flex-start;font-size:14.5px;line-height:1.5;color:var(--ink);}
+  .next-steps .ns-num{
+    flex:none;width:26px;height:26px;border-radius:50%;
+    background:var(--accent-soft);color:var(--accent-ink);
+    font-family:"IBM Plex Mono", ui-monospace, monospace;font-size:12.5px;font-weight:700;
+    display:flex;align-items:center;justify-content:center;
+  }
 
   .download-row{
     display:flex;
@@ -645,6 +670,8 @@
 <script>
 (function(){
   var NBSP = ' ';
+  var BOOKING_URL = 'https://calendly.com/niko-datagrow/30min';
+  var CONTACT_EMAIL = 'niko@datagrow.org';
 
   // ---------------------------------------------------------------------------
   // All visible text, in English and French. Edit wording here.
@@ -709,12 +736,31 @@
       aiLabel: "AI tools", aiOn: "Already using or trying AI", aiOff: "Not yet tried AI",
       recapShow: "See all your answers", recapHide: "Hide your answers",
       download: "Download results (PDF)",
-      cta: "Once your data is solid, that's when AI pays off. Want a second opinion on where to start? Email <a href=\"mailto:niko@datagrow.org\">niko@datagrow.org</a> — happy to talk through what this looks like for your business specifically.",
+      cta: "Once your data is solid, that's when AI pays off. Want help deciding where to start? Book a free 30-minute call and we'll go through your answers together.",
+      bookBtn: "Book your free 30-minute call →",
+      ctaAlt: "Or email",
+      nextHead: "Your next steps",
+      nextSub: "Based on your answers — small, practical things you can start this week.",
+      pdfBook: "Book a free 30-minute call:",
+      steps: {
+        m0: "Find where you retype the same information — a supplier invoice, an order, a form — and note how often it happens each week. That's usually the easiest thing to automate.",
+        m1: "List the 2–3 files or tools you copy between every week. Connecting them is often a quick win.",
+        m2: "Pick the report you rebuild most often and time it next time. That's your baseline — and a strong candidate for an automatic report.",
+        m3: "Add simple checks where mistakes cost the most — for example, flag totals that don't match or cells left empty.",
+        m4: "Estimate the hours per week your team spends on repetitive data tasks. Even a rough number shows what automation is worth to you.",
+        q0: "Choose one 'master' file for customers (or products) and make it the only place changes are made.",
+        q1: "Write down which numbers you always re-check before trusting a report — that shows exactly where your data breaks.",
+        q2: "Clean your most-used file first: remove duplicates and fill the gaps before building anything on top of it.",
+        q3: "Agree on a few simple rules with your team: one date format, one list of categories, one way to name customers.",
+        g1: "Pick one recurring report and time how long it takes — that's your baseline for measuring future gains.",
+        g2: "Write down the 3 numbers you check most often to run the business. A simple dashboard with just those can save time every week.",
+        g3: "Your basics are solid, so this is a good moment to try AI on a real task — for example, summarising customer feedback or drafting replies."
+      },
       retake: "Retake the check",
       pdfSubline: function(d){ return "DataGrow · Free readiness check · Results generated " + d; },
       pdfGlance: "Results at a glance",
       pdfAnswers: "Your answers",
-      pdfClosing: "Once your data is solid, that's when AI pays off. Questions about these results, or where to start? Email niko@datagrow.org.",
+      pdfClosing: "Once your data is solid, that's when AI pays off. Questions about these results, or where to start?",
       pdfFile: "data-ai-readiness-check-results.pdf",
       pdfFormat: "letter",
       dateLocale: "en-US",
@@ -782,12 +828,31 @@
       aiLabel: "Outils d’IA", aiOn: "Utilise ou teste déjà l’IA", aiOff: "N’a pas encore essayé l’IA",
       recapShow: "Voir toutes vos réponses", recapHide: "Masquer vos réponses",
       download: "Télécharger les résultats (PDF)",
-      cta: "Une fois vos données solides, c’est là que l’IA devient rentable. Envie d’un deuxième avis sur par où commencer" + NBSP + "? Écrivez à <a href=\"mailto:niko@datagrow.org\">niko@datagrow.org</a> — je serai ravi d’en parler pour votre activité.",
+      cta: "Une fois vos données solides, c’est là que l’IA devient rentable. Envie d’aide pour savoir par où commencer" + NBSP + "? Réservez un appel gratuit de 30 minutes" + NBSP + ": nous regarderons vos réponses ensemble.",
+      bookBtn: "Réserver mon appel gratuit (30 min) →",
+      ctaAlt: "Ou écrivez à",
+      nextHead: "Vos prochaines étapes",
+      nextSub: "D’après vos réponses — des actions simples à lancer dès cette semaine.",
+      pdfBook: "Réserver un appel gratuit de 30 minutes" + NBSP + ":",
+      steps: {
+        m0: "Repérez où vous ressaisissez la même information — facture fournisseur, commande, formulaire — et notez combien de fois par semaine. C’est souvent le plus simple à automatiser.",
+        m1: "Listez les 2 ou 3 fichiers ou outils entre lesquels vous faites du copier-coller chaque semaine. Les relier est souvent un gain rapide.",
+        m2: "Choisissez le rapport que vous refaites le plus souvent et chronométrez-le la prochaine fois. C’est votre point de départ — et un bon candidat pour un rapport automatique.",
+        m3: "Ajoutez des contrôles simples là où les erreurs coûtent le plus — par exemple, signaler les totaux qui ne correspondent pas ou les cases vides.",
+        m4: "Estimez le nombre d’heures par semaine que votre équipe passe sur des tâches de données répétitives. Même un chiffre approximatif montre ce que l’automatisation peut vous rapporter.",
+        q0: "Choisissez un fichier «" + NBSP + "maître" + NBSP + "» pour vos clients (ou vos produits) et faites-en le seul endroit où l’on modifie les informations.",
+        q1: "Notez les chiffres que vous revérifiez toujours avant de faire confiance à un rapport — cela montre précisément où vos données posent problème.",
+        q2: "Nettoyez d’abord votre fichier le plus utilisé" + NBSP + ": supprimez les doublons et complétez les manques avant de construire quoi que ce soit dessus.",
+        q3: "Fixez quelques règles simples avec votre équipe" + NBSP + ": un seul format de date, une seule liste de catégories, une seule façon de nommer les clients.",
+        g1: "Choisissez un rapport récurrent et chronométrez-le — c’est votre point de départ pour mesurer les gains à venir.",
+        g2: "Notez les 3 chiffres que vous consultez le plus pour piloter votre activité. Un tableau de bord simple avec seulement ceux-là peut vous faire gagner du temps chaque semaine.",
+        g3: "Vos bases sont solides" + NBSP + ": c’est le bon moment pour tester l’IA sur une vraie tâche — par exemple résumer les avis clients ou préparer des réponses."
+      },
       retake: "Refaire le test",
       pdfSubline: function(d){ return "DataGrow · Test gratuit · Résultats du " + d; },
       pdfGlance: "Vos résultats en bref",
       pdfAnswers: "Vos réponses",
-      pdfClosing: "Une fois vos données solides, c’est là que l’IA devient rentable. Des questions sur ces résultats, ou sur par où commencer" + NBSP + "? Écrivez à niko@datagrow.org.",
+      pdfClosing: "Une fois vos données solides, c’est là que l’IA devient rentable. Des questions sur ces résultats, ou sur par où commencer" + NBSP + "?",
       pdfFile: "resultats-test-donnees-datagrow.pdf",
       pdfFormat: "a4",
       dateLocale: "fr-FR",
@@ -1038,6 +1103,33 @@
     else { verdictKey = 'good'; tone = 'good'; }
     var verdict = t.verdicts[verdictKey];
 
+    // Tailored next steps: one per answer that flags a problem, data-quality fixes first when the
+    // verdict says to clean up; topped up with general steps so there are always 2–3.
+    function pickNextSteps(){
+      var manualKeys = [], qualityKeys = [];
+      for (var i = 0; i < MANUAL_COUNT; i++){
+        var a = answers['m' + i];
+        if (manualReversed[i] ? a === 'no' : a === 'yes') manualKeys.push('m' + i);
+      }
+      for (var j = 0; j < qualityLen; j++){
+        var b = answers['q' + j];
+        if (qualityReversed[j] ? b === 'no' : b === 'yes') qualityKeys.push('q' + j);
+      }
+      var qualityFirst = (verdictKey === 'cleanup' || verdictKey === 'hidden');
+      var primary = qualityFirst ? qualityKeys : manualKeys;
+      var secondary = qualityFirst ? manualKeys : qualityKeys;
+      // Up to two from the main problem area, then one from the other, then the rest.
+      var order = primary.slice(0, 2).concat(secondary.slice(0, 1), primary.slice(2), secondary.slice(1));
+      var picked = order.slice(0, 3);
+      var fillers = ['g1', 'g2', 'g3'];
+      if (verdictKey === 'good') picked = picked.concat(['g3']);
+      for (var k = 0; picked.length < 3 && k < fillers.length; k++){
+        if (picked.indexOf(fillers[k]) === -1) picked.push(fillers[k]);
+      }
+      return picked.slice(0, 3).map(function(key){ return t.steps[key]; });
+    }
+    var nextSteps = pickNextSteps();
+
     var toneColor = {good: 'var(--good)', warn: 'var(--warn)', risk: 'var(--risk)'};
     var toneSoft = {good: 'var(--good-soft)', warn: 'var(--warn-soft)', risk: 'var(--risk-soft)'};
 
@@ -1091,6 +1183,13 @@
           '</div>'
         : '') +
       '</div>' +
+      '<div class="next-steps">' +
+        '<h3>' + t.nextHead + '</h3>' +
+        '<p class="ns-sub">' + t.nextSub + '</p>' +
+        '<ol>' + nextSteps.map(function(st, i){
+          return '<li><span class="ns-num">' + (i + 1) + '</span><span>' + st + '</span></li>';
+        }).join('') + '</ol>' +
+      '</div>' +
       '<div class="recap">' +
         '<button type="button" class="recap-toggle" id="recapToggle" aria-expanded="' + (wasExpanded ? 'true' : 'false') + '">' +
           '<span>' + (wasExpanded ? t.recapHide : t.recapShow) + '</span>' +
@@ -1104,7 +1203,11 @@
           t.download +
         '</button>' +
       '</div>' +
-      '<div class="cta">' + t.cta + '</div>' +
+      '<div class="cta">' +
+        '<p>' + t.cta + '</p>' +
+        '<a class="book-btn" href="' + BOOKING_URL + '" target="_blank" rel="noopener">' + t.bookBtn + '</a>' +
+        '<span class="cta-alt">' + t.ctaAlt + ' <a href="mailto:' + CONTACT_EMAIL + '">' + CONTACT_EMAIL + '</a></span>' +
+      '</div>' +
       '<button class="retake" id="retakeBtn">' + t.retake + '</button>';
 
     results.hidden = false;
@@ -1225,6 +1328,29 @@
       doc.line(margin, y, pageWidth - margin, y);
       y += 18;
 
+      // Next steps
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(10.5);
+      doc.setTextColor(HEAD_RGB[0], HEAD_RGB[1], HEAD_RGB[2]);
+      doc.text(t.nextHead, margin, y);
+      y += 15;
+      doc.setFontSize(9.5);
+      nextSteps.forEach(function(st, i){
+        doc.setFont('helvetica', 'bold');
+        doc.setTextColor(31, 122, 77);
+        doc.text((i + 1) + '.', margin, y);
+        doc.setFont('helvetica', 'normal');
+        doc.setTextColor(26, 34, 29);
+        var stLines = doc.splitTextToSize(st, maxWidth - 16);
+        doc.text(stLines, margin + 16, y);
+        y += stLines.length * 12 + 5;
+      });
+
+      y += 6;
+      doc.setDrawColor(221, 228, 218);
+      doc.line(margin, y, pageWidth - margin, y);
+      y += 18;
+
       // "Your answers" recap — two columns (Manual work / Data quality), kept compact so the
       // whole report stays on one page.
       doc.setFont('helvetica', 'bold');
@@ -1269,10 +1395,23 @@
       doc.line(margin, y, pageWidth - margin, y);
       y += 16;
 
+      var pageHeight = doc.internal.pageSize.getHeight();
+      if (y > pageHeight - 70){ doc.addPage(); y = 50; }
       doc.setFont('helvetica', 'normal');
       doc.setFontSize(9);
       doc.setTextColor(92, 106, 96);
-      doc.text(doc.splitTextToSize(t.pdfClosing, maxWidth), margin, y);
+      var closingLines = doc.splitTextToSize(t.pdfClosing, maxWidth);
+      doc.text(closingLines, margin, y);
+      y += closingLines.length * 11.5 + 4;
+      doc.setFont('helvetica', 'bold');
+      doc.setTextColor(31, 122, 77);
+      doc.text(t.pdfBook, margin, y);
+      var bookLabelW = doc.getTextWidth(t.pdfBook + ' ');
+      doc.setFont('helvetica', 'normal');
+      doc.textWithLink(BOOKING_URL, margin + bookLabelW, y, { url: BOOKING_URL });
+      y += 12;
+      doc.setTextColor(92, 106, 96);
+      doc.textWithLink(t.ctaAlt + ' ' + CONTACT_EMAIL, margin, y, { url: 'mailto:' + CONTACT_EMAIL });
 
       var filename = t.pdfFile;
       var blob = doc.output('blob');

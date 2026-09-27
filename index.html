@@ -1396,22 +1396,35 @@
       y += 16;
 
       var pageHeight = doc.internal.pageSize.getHeight();
-      if (y > pageHeight - 70){ doc.addPage(); y = 50; }
+      if (y > pageHeight - 95){ doc.addPage(); y = 50; }
       doc.setFont('helvetica', 'normal');
       doc.setFontSize(9);
       doc.setTextColor(92, 106, 96);
       var closingLines = doc.splitTextToSize(t.pdfClosing, maxWidth);
       doc.text(closingLines, margin, y);
       y += closingLines.length * 11.5 + 4;
+      // Booking "button": deep brand pink box with white text, the whole box clickable.
+      y += 4;
       doc.setFont('helvetica', 'bold');
-      doc.setTextColor(31, 122, 77);
-      doc.text(t.pdfBook, margin, y);
-      var bookLabelW = doc.getTextWidth(t.pdfBook + ' ');
+      doc.setFontSize(11);
+      var btnLabel = t.bookBtn.replace(/\s*→\s*$/, '') + '  »'; // the → arrow isn't in the PDF's built-in font
+      var btnW = doc.getTextWidth(btnLabel) + 32;
+      var btnH = 26;
+      doc.setFillColor(209, 15, 114); // #D10F72
+      doc.roundedRect(margin, y, btnW, btnH, 5, 5, 'F');
+      doc.setTextColor(255, 255, 255);
+      doc.text(btnLabel, margin + 16, y + 17);
+      doc.link(margin, y, btnW, btnH, { url: BOOKING_URL });
+      y += btnH + 13;
+      // Plain-text link underneath, for printed copies.
       doc.setFont('helvetica', 'normal');
-      doc.textWithLink(BOOKING_URL, margin + bookLabelW, y, { url: BOOKING_URL });
-      y += 12;
+      doc.setFontSize(8.5);
+      doc.setTextColor(209, 15, 114);
+      doc.textWithLink(BOOKING_URL, margin, y, { url: BOOKING_URL });
       doc.setTextColor(92, 106, 96);
-      doc.textWithLink(t.ctaAlt + ' ' + CONTACT_EMAIL, margin, y, { url: 'mailto:' + CONTACT_EMAIL });
+      var urlW = doc.getTextWidth(BOOKING_URL + '   ·   ');
+      doc.text('·', margin + doc.getTextWidth(BOOKING_URL + '   '), y);
+      doc.textWithLink(t.ctaAlt + ' ' + CONTACT_EMAIL, margin + urlW, y, { url: 'mailto:' + CONTACT_EMAIL });
 
       var filename = t.pdfFile;
       var blob = doc.output('blob');
